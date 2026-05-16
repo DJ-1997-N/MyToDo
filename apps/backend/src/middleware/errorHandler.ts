@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { AppError } from '@/utils/errors';
+import { AppError } from '../utils/errors';
 
 // 全局错误处理中间件
 export const errorHandler = (

@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import { hashPassword, comparePassword } from '@/utils/password';
-import { generateToken } from '@/utils/jwt';
-import { badRequest, conflict, unauthorized } from '@/utils/errors';
+import { hashPassword, comparePassword } from '../utils/password';
+import { generateToken } from '../utils/jwt';
+import { badRequest, conflict, unauthorized } from '../utils/errors';
 
 const prisma = new PrismaClient();
 

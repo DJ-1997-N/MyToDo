@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { verifyToken } from '@/utils/jwt';
+import { verifyToken } from '../utils/jwt';
 
 // 扩展 Express Request 类型
 declare global {

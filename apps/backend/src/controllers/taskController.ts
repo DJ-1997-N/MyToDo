@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { badRequest, notFound } from '@/utils/errors';
+import { badRequest, notFound } from '../utils/errors';
 
 const prisma = new PrismaClient();
 
