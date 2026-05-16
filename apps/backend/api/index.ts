@@ -1,8 +1,8 @@
 import app from '../src/index';
-import { VercelRequest, VercelResponse } from '@vercel/node';
 
-module.exports = function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = (req, res) => {
   return app(req, res);
 };
+
 
 

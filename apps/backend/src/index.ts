@@ -40,7 +40,7 @@ app.use(errorHandler);
 
 // 本地开发时启动服务器（Vercel 环境不启动）
 if (!process.env.VERCEL) {
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
   app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
     console.log(`📝 API is available at http://localhost:${PORT}/api`);
