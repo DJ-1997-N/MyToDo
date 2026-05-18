@@ -13,11 +13,19 @@ const app: Express = express();
 
 // CORS 配置：允许前端跨域请求
 const corsOptions = {
-  origin: [
-    'http://localhost:5173',  // 本地开发
-    'https://my-to-do-frontend-one.vercel.app',  // 生产环境
-    'https://my-to-do-frontend-one.vercel.app'  // 实际域名
-  ],
+  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+    // 允许无origin的请求（同源请求、Postman等）
+    if (!origin) return callback(null, true);
+    
+    // 允许本地开发
+    if (origin === 'http://localhost:5173') return callback(null, true);
+    
+    // 允许所有 vercel.app 域名（生产 + 预览环境）
+    if (origin.endsWith('.vercel.app')) return callback(null, true);
+    
+    // 其他域名拒绝
+    callback(new Error('CORS policy: Origin not allowed'));
+  },
   credentials: true,
   optionsSuccessStatus: 200
 };
