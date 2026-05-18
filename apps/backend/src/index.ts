@@ -12,25 +12,12 @@ dotenv.config();
 const app: Express = express();
 
 // CORS 配置：允许前端跨域请求
-const corsOptions = {
-  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-    // 允许无origin的请求（同源请求、Postman等）
-    if (!origin) return callback(null, true);
-    
-    // 允许本地开发
-    if (origin === 'http://localhost:5173') return callback(null, true);
-    
-    // 允许所有 vercel.app 域名（生产 + 预览环境）
-    if (origin.endsWith('.vercel.app')) return callback(null, true);
-    
-    // 其他域名拒绝
-    callback(new Error('CORS policy: Origin not allowed'));
-  },
+// 使用 origin: true 回声模式，自动允许所有来源（同时支持 credentials）
+app.use(cors({
+  origin: true,
   credentials: true,
   optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
+}));
 app.use(express.json());
 
 // 路由
