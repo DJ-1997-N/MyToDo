@@ -10,8 +10,7 @@
   "scripts": {
     "dev": "concurrently -n frontend,backend -c blue,green \"npm run dev -w apps/frontend\" \"npm run dev -w apps/backend\"",
     "build": "npm run build -w apps/frontend && npm run build -w apps/backend",
-    "clean": "rm -rf **/node_modules **/dist **/build",
-    "prepare": "npm run prepare -w apps/backend"
+    "clean": "rm -rf **/node_modules **/dist **/build"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
