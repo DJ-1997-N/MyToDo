@@ -1,6 +1,19 @@
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 
 const app: Express = express();
+
+// CORS 配置：允许前端跨域请求
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',  // 本地开发
+    'https://my-to-do-frontend-one.vercel.app'  // 生产环境
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Minimal backend is working!' });
